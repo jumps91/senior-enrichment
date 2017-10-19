@@ -6,7 +6,7 @@ export default class StudentInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      student: { campus: {} }
+      student: {}
     };
   }
 
@@ -27,9 +27,13 @@ export default class StudentInfo extends Component {
         <h5>Name: {this.state.student.name}</h5>
         <h5>Email: {this.state.student.email}</h5>
         <h5>Campus:
-          <Link to={`/campuses/${this.state.student.campus.id}`}>{this.state.student.campus.name}</Link>
+          { this.state.student.campus &&
+            <Link to={`/campuses/${this.state.student.campus.id}`}>
+              {this.state.student.campus.name}
+            </Link>
+          }
         </h5>
       </div>
-    )
+    );
   }
 }

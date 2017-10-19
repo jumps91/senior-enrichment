@@ -35,6 +35,7 @@ export default class AddstudentButton extends Component {
                     />
                     <select
                         onChange={e => this.setState({ studentCampusId: e.target.value })}>
+                        <option selected hidden>SELECT CAMPUS</option>
                         {this.props.campuses.map(campus => (
                             <option
                                 key={campus.id}

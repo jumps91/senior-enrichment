@@ -104,13 +104,7 @@ export default class Main extends Component {
             deleteStudent={this.deleteStudent}
           />)}
         />
-        <Route
-          exact path="/campuses/:campusId"
-          render={() => (<CampusInfo
-            addStudent={this.addStudent}
-            deleteStudent={this.deleteStudent}
-          />)}
-        />
+        <Route exact path="/campuses/:campusId" component={CampusInfo} />
         <Route exact path="/students/:studentId" component={StudentInfo} />
       </div>
     )

@@ -8,22 +8,22 @@ export default class Campuses extends Component {
     super(props);
     this.state = {
       campuses: []
-      // campusName: '',
-      // campusImage: ''
     };
 
-  // this.addCampus = this.addCampus.bind(this);
+    this.addCampus = this.addCampus.bind(this);
   }
 
-  // addCampus(event) {
-  //       event.preventDefault();
-  //       axios.post('api/campus', {
-  //           name: this.state.campusName,
-  //           image: this.state.campusImage
-  //       })
-  //           .then(this.setState({ campusName: '' }))
-  //           .then(this.setState({ campusImage: '' }))
-  //   }
+  addCampus(event, campusName, campusImage) {
+    event.preventDefault();
+    axios.post('api/campus', {
+      name: campusName,
+      image: campusImage
+    })
+      .then(res => res.data)
+      .then(addedCampus => {
+        this.setState({ campuses: this.state.campuses.concat(addedCampus) })
+      });
+  }
 
   componentDidMount() {
     axios.get('api/campus/')
@@ -36,7 +36,7 @@ export default class Campuses extends Component {
   render() {
     return (
       <div>
-        {/* <AddCampusButton addCampus={this.addCampus} /> */}
+        <AddCampusButton addCampus={this.addCampus} />
         {
           this.state.campuses.map(campus => (
             <div key={campus.id}>

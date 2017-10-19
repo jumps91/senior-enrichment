@@ -6,16 +6,21 @@ export default class AddCampusButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            campusImage: '',
-            campusName: ''
+            campusName: '',
+            campusImage: ''
         };
     }
 
     render() {
-        console.log(this.state.campusName);
         return (
             <div>
-                <form onSubmit={this.props.addCampus()}>
+                <form onSubmit={(event) => {
+                    this.props.addCampus(event, this.state.campusName, this.state.campusImage)
+                    this.setState({
+                        campusName: '',
+                        campusImage: ''
+                    })
+                }}>
                     <input
                         value={this.state.campusName}
                         onChange={e => this.setState({ campusName: e.target.value })}

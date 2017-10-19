@@ -34,7 +34,7 @@ api.get('/student/:studentId', (req, res, next) => {
 
 api.get('/student/:campusId/students', (req, res, next) => {
 	db.models.student.findAll(
-		{ where: { campusId: req.params.campusId }})
+		{ where: { campusId: req.params.campusId } })
 		.then(data => res.send(data))
 		.catch(next);
 });
@@ -47,42 +47,42 @@ api.post('/campus', (req, res, next) => {
 
 api.post('/student', (req, res, next) => {
 	db.models.student.create(req.body)
-	.then(res.sendStatus(201))
-	.catch(next);
+		.then(created => (res.json(created)))
+		.catch(next);
 });
 
 api.put('/campus/:campusId', (req, res, next) => {
 	db.models.campus.update(
 		req.body,
-		{where: { id: req.params.campusId }}
+		{ where: { id: req.params.campusId } }
 	)
-	.then(res.sendStatus(202))
-	.catch(next);
+		.then(res.sendStatus(202))
+		.catch(next);
 });
 
 api.put('/student/:studentId', (req, res, next) => {
 	db.models.student.update(
 		req.body,
-		{where: { id: req.params.studentId }}
+		{ where: { id: req.params.studentId } }
 	)
-	.then(res.sendStatus(202))
-	.catch(next);
+		.then(res.sendStatus(202))
+		.catch(next);
 });
 
 api.delete('/campus/:campusId', (req, res, next) => {
 	db.models.campus.destroy(
-		{where: { id: req.params.campusId }}
+		{ where: { id: req.params.campusId } }
 	)
-	.then(res.send('deleted'))
-	.catch(next);
+		.then(res.send('deleted'))
+		.catch(next);
 });
 
 api.delete('/student/:studentId', (req, res, next) => {
 	db.models.student.destroy(
-		{where: { id: req.params.studentId }}
+		{ where: { id: req.params.studentId } }
 	)
-	.then(res.send('deleted'))
-	.catch(next);
+		.then(res.send('deleted'))
+		.catch(next);
 });
 
 

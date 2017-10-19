@@ -26,7 +26,9 @@ export default class StudentInfo extends Component {
         <h4>Student Information:</h4>
         <h5>Name: {this.state.student.name}</h5>
         <h5>Email: {this.state.student.email}</h5>
-        <h5>Campus: {this.state.student.campus.name}</h5>
+        <h5>Campus:
+          <Link to={`/campuses/${this.state.student.campus.id}`}>{this.state.student.campus.name}</Link>
+        </h5>
       </div>
     )
   }

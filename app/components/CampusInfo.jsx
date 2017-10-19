@@ -12,13 +12,13 @@ export default class CampusInfo extends Component {
   }
 
   componentDidMount() {
-    const getCampus = axios.get(`api/campus/${this.props.match.params.campusId}`)
+    axios.get(`api/campus/${this.props.match.params.campusId}`)
       .then(res => res.data)
       .then(campus => {
         this.setState({ campus });
       });
 
-    const getStudents = axios.get(`api/student/${this.props.match.params.campusId}/students`)
+    axios.get(`api/student/${this.props.match.params.campusId}/students`)
       .then(res => res.data)
       .then(students => {
         this.setState({ students });
@@ -26,10 +26,9 @@ export default class CampusInfo extends Component {
   }
 
   render() {
-    console.log('hitting campusInfo component state: ', this.state);
     return (
       <div>
-        <h4>Campus Students:</h4>
+        <h4>{this.state.campus.name} Students:</h4>
         {
           this.state.students.map(student => (
             <div key={student.id}>

@@ -1,5 +1,15 @@
 'use strict';
 
+require('sequelize');
+const Campus = require('./campus');
+const Student = require('./student');
+
+// import Campus from './campus';
+// import Student from './student';
+
+Student.belongsTo(Campus);
+
+
 // Require all the models
 	// Running each model (i.e. table) module (i.e. file) registers each model into our sequelize db so any other part of the application could call db.model('user') OR db.models.user to get access to the `user` model.
 	// This works if we all use the same Sequelize instance (instantiated in and exported from `/db/index.js`)

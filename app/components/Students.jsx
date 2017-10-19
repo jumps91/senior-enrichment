@@ -19,7 +19,7 @@ export default class Students extends Component {
     axios.post('api/student', {
       name: studentName,
       email: studentEmail,
-      campusId: studentCampusId
+      campusId: parseInt(studentCampusId)
     })
       .then(res => res.data)
       .then(addedStudent => {

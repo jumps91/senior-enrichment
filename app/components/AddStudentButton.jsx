@@ -33,12 +33,16 @@ export default class AddstudentButton extends Component {
                         onChange={e => this.setState({ studentEmail: e.target.value })}
                         placeholder="Enter student Email"
                     />
-                    <input
-                        value={this.state.studentCampusId}
-                        onChange={e => this.setState({ studentCampusId: e.target.value })}
-                        placeholder="Enter student CampusId"
-                    />
-                    <select>
+                    <select
+                        onChange={e => this.setState({ studentCampusId: e.target.value })}>
+                        {this.props.campuses.map(campus => (
+                            <option
+                                key={campus.id}
+                                value={campus.id}
+                            >{campus.name}
+                            </option>
+                        ))
+                        }
                     </select>
                     <button type="submit">Add Student</button>
                 </form>

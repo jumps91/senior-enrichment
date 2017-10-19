@@ -67,6 +67,7 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
+    console.log('Main JSX DID Mount Ran');
     axios.get('api/campus/')
       .then(res => res.data)
       .then(campuses => {
@@ -105,7 +106,13 @@ export default class Main extends Component {
           />)}
         />
         <Route exact path="/campuses/:campusId" component={CampusInfo} />
-        <Route exact path="/students/:studentId" component={StudentInfo} />
+        <Route
+          exact path="/students/:studentId"
+          render={(props) => (<StudentInfo
+            {...props}
+            campuses={this.state.campuses}
+          />)}
+        />
       </div>
     )
   }
